@@ -11,7 +11,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
+                sh 'yarn config set registry https://registry.npm.taobao.org --global'
+                sh 'yarn config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/'
+                sh 'yarn install --prefer-offline'
             }
         }
         stage('Test') {
